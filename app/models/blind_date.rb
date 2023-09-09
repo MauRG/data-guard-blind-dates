@@ -1,0 +1,2 @@
+class BlindDate < ApplicationRecord
+end
