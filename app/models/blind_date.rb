@@ -3,5 +3,5 @@
 class BlindDate < ApplicationRecord
   has_and_belongs_to_many :employees
 
-  validates :week, :year, presence: true
+  validates :week, presence: true
 end
