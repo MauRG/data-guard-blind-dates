@@ -1,24 +1,17 @@
-# README
+# DataGuard Blind Dates
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Summary
+This application is for the coding challenge part of the interview process for DataGuard.
 
-Things you may want to cover:
+The application should be used to organize Blind Dates on Fridays where random people get together to have lunch as an ice breaker.
 
-* Ruby version
+## How to run
+The application is ready to run in a docker container, to run it you need to have Docker Compose installed.
+To launch the application execute
+> docker compose up
 
-* System dependencies
+This will trigger the docker to compose command which will build the container, if necessary, and launch both the database and application.
 
-* Configuration
+The application can be accessed from your local browser under `http://localhost:3000`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Assumptions
