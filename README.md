@@ -37,6 +37,8 @@ During development `Rubocop` was run on the application to keep a standard.
     - has one leader
 - Employee
     - belongs to a department
+- Department
+    - Can be just a string or enum initialy
 
 - Create blind dates {:week, :size}
     - designate of blind date of size
@@ -45,5 +47,5 @@ During development `Rubocop` was run on the application to keep a standard.
     - Count how many unbalanced BlindDates to have (+1 or -1 users)
 
 ### Bonus requirements
-- Participation for the week requires intermediate table, employee/week
+- Participation for the week requires intermediate table, employee/week. Or an invite table that belongs to user
 - Add Employee endpoint is lowest priority due to time constraints and since it is just an improvement of the seeding process instead of new feature
