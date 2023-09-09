@@ -10,6 +10,13 @@ The application is ready to run in a docker container, to run it you need to hav
 To launch the application execute
 > docker compose up
 
+When running for the first time:
+- after the docker container is running, execute from another terminal
+> docker compose run web rails db:create
+> docker compose run web rails db:migrate
+
+to setup the datase
+
 This will trigger the docker to compose command which will build the container, if necessary, and launch both the database and application.
 
 The application can be accessed from your local browser under `http://localhost:3000`
