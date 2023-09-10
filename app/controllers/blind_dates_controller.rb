@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlindDatesController < ApplicationController
   # GET /blind_dates/:week/
   def index
@@ -8,14 +10,11 @@ class BlindDatesController < ApplicationController
 
   # POST /blind_dates/:week/
   def generate
-    #generate blind dates
-    render status: :created
-  end
+    week = params.require(:week)
+    size = params.fetch(:size, 4)
 
-  private
+    blind_dates = BlindDate.generate(week, size)
 
-  # Only allow a list of trusted parameters through.
-  def blind_date_params
-    params.fetch(:week, nil)
+    render json: blind_dates, status: :created
   end
 end
