@@ -3,9 +3,9 @@
 class BlindDatesController < ApplicationController
   # GET /blind_dates/:week/
   def index
-    @blind_dates = BlindDate.where(week: params[:week])
+    blind_dates = BlindDate.where(week: params[:week])
 
-    render json: @blind_dates
+    render json: blind_dates, include: [:blind_dates_employees, :employees]
   end
 
   # POST /blind_dates/:week/
@@ -14,7 +14,6 @@ class BlindDatesController < ApplicationController
     size = params.fetch(:size, 4)
 
     blind_dates = BlindDate.generate(week, size)
-
-    render json: blind_dates, status: :created
+    render json: blind_dates, include: [:blind_dates_employees, :employees], status: :created
   end
 end

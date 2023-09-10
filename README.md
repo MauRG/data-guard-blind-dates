@@ -23,10 +23,14 @@ This will trigger the docker to compose command which will build the container, 
 The application can be accessed from your local browser under `http://localhost:3000`
 
 ## Assumptions
-
-
-## Notes
-During development `Rubocop` was run on the application to keep a standard.
+No validation for week, the same week can be triggered more than once and that will make a mess
+Leaders are chosen at random
+The distribution is done like children choosing a footbal team by filling them one by one to better distribute between departments
+This means that the distribution depends on the initial set. So if the set is the same the order will be the same. My thoughs to randomize this was using the confirmation time as a second ordering parameter to randomize the list.
+In the end i don't think i did a good job with the distribution as it became too deterministic, for what i did to work would require creating sets of users by department and shuffling this sets before distributing.
+There is a database seed but no CRUD to manage employees
+The rendering is not good because the `leader` information is in the join table and the default JSON serializer is being used. All the information is there but not in the nicest formating
+The bonus requirements were not done because of time constraints, but i do believe the modeling would easily accept the new requirements
 
 ## Implementation Notes
 - Organize  BlindDates

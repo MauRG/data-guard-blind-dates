@@ -26,7 +26,7 @@ describe BlindDate do
     end
 
     it 'distributes the departments' do
-      expect(described_class.generate(1, 3).map { |group| group.employees.map(&:department) }).to eq([%w[A A B B], %w[A A B C]])
+      expect(res.map { |group| group.employees.map(&:department) }).to eq([%w[A A B B], %w[A A B C]])
     end
 
     it 'assigns one of the employees as leader' do
