@@ -5,8 +5,6 @@ require 'rails_helper'
 describe BlindDate do
   it { is_expected.to validate_presence_of(:week) }
 
-  it { should have_and_belong_to_many(:employees) }
-
   context 'When generating a group of blind dates' do
     before do
       Employee.create(name: '1', department: 'A')
@@ -19,7 +17,7 @@ describe BlindDate do
       Employee.create(name: '8', department: 'C')
     end
 
-    it 'generates 3 groups' do
+    it 'generates 4 groups' do
       expect(described_class.generate(1, 2).count).to eq(4)
     end
 
@@ -29,6 +27,10 @@ describe BlindDate do
 
     it 'distributes the departments' do
       expect(described_class.generate(1, 3).map { |group| group.employees.map(&:department) }).to eq([%w[A A B B], %w[A A B C]])
+    end
+
+    it 'assigns one of the employees as leader' do
+      expect(described_class.generate(1, 1).first.blind_dates_employees.first.leader).to be_truthy
     end
 
     context 'when group size is larger than number of employees' do

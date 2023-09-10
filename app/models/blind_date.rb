@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class BlindDate < ApplicationRecord
-  has_and_belongs_to_many :employees
+  has_many :blind_dates_employees
+  has_many :employees, through: :blind_dates_employees
 
   validates :week, presence: true
 
@@ -12,6 +13,7 @@ class BlindDate < ApplicationRecord
         BlindDate.create(week:)
       end
       distribute_employees(groups, employees)
+      assign_leader(groups.first)
       groups
     end
 
@@ -36,12 +38,8 @@ class BlindDate < ApplicationRecord
       quantity
     end
 
-    def create_blind_date(week, employees)
-      blind_date = BlindDate.create(week:)
-      # leader = employees.sample
-      # employees -= leader
-      blind_date.employees << employees
-      blind_date
+    def assign_leader(group)
+      group.blind_dates_employees.sample.update_attribute(:leader, true)
     end
 
     def available_employees
